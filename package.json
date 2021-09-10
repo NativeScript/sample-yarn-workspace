@@ -1,0 +1,25 @@
+{
+    "name": "sample-yarn-workspace",
+    "private": true,
+    "workspaces": [
+        "apps/mobile-app-a",
+        "apps/mobile-app-b"
+    ],
+    "scripts": {
+        "clean": "npx rimraf node_modules yarn.lock package-lock.json && yarn workspace mobile-app-a clean && yarn workspace mobile-app-b clean && yarn",
+        "mobile-app-a:android": "yarn workspace mobile-app-a android",
+        "mobile-app-a:ios": "yarn workspace mobile-app-a ios",
+        "mobile-app-b:android": "yarn workspace mobile-app-b android",
+        "mobile-app-b:ios": "yarn workspace mobile-app-b ios",
+        "postinstall": "ns package-manager set yarn"
+    },
+    "dependencies": {
+        "@nativescript/core": "~8.1.1",
+        "@nativescript/theme": "~3.0.1"
+    },
+    "devDependencies": {
+        "@nativescript/types": "~8.1.1",
+        "@nativescript/webpack": "~5.0.0",
+        "typescript": "~4.3.5"
+    }
+}
